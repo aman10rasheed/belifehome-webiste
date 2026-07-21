@@ -82,6 +82,15 @@ floating consultation dock. The email address is set directly in `site.ts`.
 Breakpoints are 1024px, 900px, and 620px. A `prefers-reduced-motion` block
 disables the float and fade-up animations.
 
+### Service icons
+
+The eight service icons in `src/lib/services.tsx` are hand-drawn on a 24x24
+grid at 1.8 stroke with round caps and joins. They draw with `currentColor`
+and each service declares a `tone` of `teal` or `gold`; the tile fill, inner
+ring, and icon colour all come from `.bl-service-icon--{tone}` in CSS, so an
+icon never carries its own colour. To add a service, add an entry with a
+`tone` and a `<path>` set — no styling changes needed.
+
 ### Mobile layout
 
 The phone layout is tuned for scroll length — it went from 8383px to 4941px:

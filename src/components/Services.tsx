@@ -20,7 +20,7 @@ export default function Services() {
       <div className="bl-services-grid">
         {services.map((service) => (
           <a key={service.title} href="#enquiry" className="bl-service-card">
-            <div className="bl-service-icon" style={{ background: service.bg }}>
+            <div className={`bl-service-icon bl-service-icon--${service.tone}`}>
               {service.icon}
             </div>
             <h3 className="bl-service-title">{service.title}</h3>
