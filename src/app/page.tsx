@@ -1,3 +1,4 @@
+import CareInAction from "@/components/CareInAction";
 import ConsultationDock from "@/components/ConsultationDock";
 import Enquiry from "@/components/Enquiry";
 import Footer from "@/components/Footer";
@@ -12,6 +13,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
+        <CareInAction />
         <Enquiry />
       </main>
       <Footer />

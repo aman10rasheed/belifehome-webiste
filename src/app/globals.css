@@ -356,51 +356,25 @@ a:hover {
   border: 1px solid rgba(193, 149, 76, 0.3);
 }
 
-.bl-hero-frame-stripes {
+.bl-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Warms the photo into the teal/gold palette and keeps the bottom-left
+   "Background-verified" card legible against it. */
+.bl-hero-frame-tint {
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    135deg,
-    #123d47,
-    #123d47 22px,
-    #0f3640 22px,
-    #0f3640 44px
-  );
-}
-
-.bl-hero-frame-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at 50% 35%,
-    rgba(193, 149, 76, 0.28),
-    transparent 60%
-  );
-}
-
-.bl-hero-frame-body {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-align: center;
-  padding: 24px;
-}
-
-.bl-hero-frame-title {
-  font-family: var(--font-mulish), monospace;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  color: rgba(247, 242, 233, 0.7);
-  font-weight: 600;
-}
-
-.bl-hero-frame-note {
-  font-size: 11px;
-  color: rgba(247, 242, 233, 0.45);
+  background: linear-gradient(
+      200deg,
+      rgba(18, 69, 79, 0) 45%,
+      rgba(10, 40, 48, 0.55) 100%
+    ),
+    radial-gradient(circle at 50% 30%, rgba(193, 149, 76, 0.12), transparent 65%);
+  pointer-events: none;
 }
 
 .bl-hero-card {
@@ -535,6 +509,99 @@ a:hover {
 .bl-service-link:hover {
   gap: 11px;
   color: var(--ink);
+}
+
+/* ============ CARE IN ACTION ============ */
+
+.bl-moments {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px 100px;
+}
+
+.bl-moments-head {
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.bl-moments-h2 {
+  font-family: var(--font-playfair), serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.1;
+  margin-top: 12px;
+  letter-spacing: -0.5px;
+  text-wrap: balance;
+}
+
+.bl-moments-intro {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: rgba(15, 58, 69, 0.7);
+  margin-top: 14px;
+}
+
+.bl-moments-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.bl-moment {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(15, 58, 69, 0.09);
+  box-shadow: 0 18px 36px -28px rgba(15, 58, 69, 0.5);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.bl-moment:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 50px -28px rgba(15, 58, 69, 0.55);
+}
+
+.bl-moment-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.bl-moment:hover .bl-moment-img {
+  transform: scale(1.05);
+}
+
+.bl-moment-caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 20px 20px 18px;
+  background: linear-gradient(
+    to top,
+    rgba(10, 40, 48, 0.92) 0%,
+    rgba(10, 40, 48, 0.72) 45%,
+    rgba(10, 40, 48, 0) 100%
+  );
+  color: var(--cream-text);
+}
+
+.bl-moment-title {
+  font-family: var(--font-playfair), serif;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.bl-moment-text {
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(247, 242, 233, 0.75);
+  font-weight: 500;
 }
 
 /* ============ ENQUIRY ============ */
@@ -995,7 +1062,8 @@ a:hover {
 /* ============ RESPONSIVE ============ */
 
 @media (max-width: 1024px) {
-  .bl-services-grid {
+  .bl-services-grid,
+  .bl-moments-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1026,9 +1094,23 @@ a:hover {
   }
 }
 
+@media (max-width: 900px) {
+  .bl-moments-h2 {
+    font-size: 36px;
+  }
+}
+
 @media (max-width: 620px) {
-  .bl-services-grid {
+  .bl-services-grid,
+  .bl-moments-grid {
     grid-template-columns: 1fr;
+  }
+  .bl-moments {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .bl-moments-h2 {
+    font-size: 30px;
   }
   .bl-form-row {
     grid-template-columns: 1fr;

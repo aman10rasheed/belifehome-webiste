@@ -39,6 +39,7 @@ src/
 │   ├── Header.tsx
 │   ├── Hero.tsx
 │   ├── Services.tsx
+│   ├── CareInAction.tsx
 │   ├── Enquiry.tsx
 │   ├── EnquiryForm.tsx # Client component — the only one
 │   ├── Footer.tsx
@@ -86,11 +87,32 @@ disables the float and fade-up animations.
 Deploys as-is to any Next.js host. On Vercel: import the repo, set the two
 `NEXT_PUBLIC_*` variables, and deploy — no other configuration needed.
 
+## Images
+
+Photography lives in `public/images/`, named after its subject. Sources were
+converted from ~2 MB PNGs to quality-82 JPEG (10 MB → 1.4 MB total); `next/image`
+serves resized WebP/AVIF variants at request time.
+
+| File | Used in |
+| --- | --- |
+| `hero-caregiver-with-elderly-woman.jpg` | Hero (4:5, `priority`) |
+| `nursing-care-blood-pressure-check.jpg` | Care in action |
+| `patient-care-bedside-support.jpg` | Care in action |
+| `physiotherapy-home-session.jpg` | Care in action |
+| `baby-care-newborn-nanny.jpg` | Care in action |
+
+> **Three images carry another company's branding** and should be regenerated
+> before launch — see Known gaps.
+
 ## Known gaps
 
-- **Hero image** — the hero uses a styled placeholder ("CAREGIVER + ELDERLY
-  PATIENT PHOTO") because no photograph was supplied. Replace the
-  `.bl-hero-frame` block in `src/components/Hero.tsx` when the asset is ready.
+- **Third-party branding in photography** — the generated images contain visible
+  marks belonging to other businesses: `nursing-care-blood-pressure-check.jpg`
+  shows "EliteCare" on the lanyard, ID badge and BP cuff;
+  `baby-care-newborn-nanny.jpg` has "akshaya" embroidered on the uniform; and
+  `physiotherapy-home-session.jpg` carries a "Move Better Feel Better" wall
+  poster and uniform print. Regenerate these without text, or retouch, before the
+  site goes live. The hero and `patient-care-bedside-support.jpg` are clean.
 - **Enquiry form does not send** — it shows the confirmation state optimistically
   and discards the submission. See the `TODO` in `src/components/EnquiryForm.tsx`;
   this needs wiring to an inbox or CRM before launch.

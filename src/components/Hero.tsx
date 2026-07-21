@@ -1,10 +1,6 @@
+import Image from "next/image";
 import { waHref } from "@/lib/site";
-import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  HeartIcon,
-  WhatsAppIcon,
-} from "./icons";
+import { ArrowRightIcon, CheckCircleIcon, WhatsAppIcon } from "./icons";
 
 const stats = [
   { value: "1000+", label: "Happy families" },
@@ -65,19 +61,17 @@ export default function Hero() {
         </div>
 
         <div className="bl-hero-media">
-          {/* Photo placeholder — swap this block for the caregiver image once supplied. */}
           <div className="bl-hero-frame">
-            <div className="bl-hero-frame-stripes" aria-hidden="true" />
-            <div className="bl-hero-frame-glow" aria-hidden="true" />
-            <div className="bl-hero-frame-body">
-              <HeartIcon />
-              <div className="bl-hero-frame-title">
-                CAREGIVER + ELDERLY PATIENT PHOTO
-              </div>
-              <div className="bl-hero-frame-note">
-                warm, teal &amp; gold toned · at home
-              </div>
-            </div>
+            <Image
+              src="/images/hero-caregiver-with-elderly-woman.jpg"
+              alt="A Be Life caregiver in teal scrubs smiling with an elderly woman seated at home"
+              width={1122}
+              height={1402}
+              className="bl-hero-img"
+              sizes="(max-width: 900px) 92vw, 46vw"
+              priority
+            />
+            <div className="bl-hero-frame-tint" aria-hidden="true" />
           </div>
 
           <div className="bl-hero-card">
