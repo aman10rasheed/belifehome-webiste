@@ -82,6 +82,27 @@ floating consultation dock. The email address is set directly in `site.ts`.
 Breakpoints are 1024px, 900px, and 620px. A `prefers-reduced-motion` block
 disables the float and fade-up animations.
 
+### Mobile layout
+
+The phone layout is tuned for scroll length — it went from 8383px to 4941px:
+
+- **Services** render 2-up in a compact card below 620px rather than eight
+  stacked full-size cards. The card itself is the link, so the "Learn more"
+  affordance is hidden at that size.
+- **Care in action** turns into a full-bleed horizontal snap rail below 900px.
+  Four stacked squares cost ~1500px of scroll; one peeking row costs ~330px.
+  It is focusable so it can be scrolled by keyboard.
+- **Footer** keeps Services and Company paired side by side; only the brand and
+  contact blocks span full width.
+- **Hero CTAs** go full width for larger tap targets and a clean edge.
+
+### Logo files
+
+`public/be-life-logo.png` is cropped to the mark (the original had ~25%
+transparent padding, so it rendered a quarter smaller than its CSS box).
+`public/be-life-logo-reverse.png` recolours the teal half to cream for the dark
+footer, where the standard mark is close to invisible.
+
 ## Deployment
 
 Deploys as-is to any Next.js host. On Vercel: import the repo, set the two

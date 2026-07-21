@@ -41,7 +41,14 @@ export default function CareInAction() {
         </p>
       </div>
 
-      <div className="bl-moments-grid">
+      {/* Becomes a horizontal snap rail under 900px; tabIndex keeps it
+          scrollable by keyboard there. */}
+      <div
+        className="bl-moments-grid"
+        role="group"
+        aria-label="Photographs of Be Life care visits"
+        tabIndex={0}
+      >
         {moments.map((moment) => (
           <figure key={moment.title} className="bl-moment">
             <Image

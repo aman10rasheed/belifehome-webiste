@@ -29,12 +29,14 @@ export default function Footer() {
   return (
     <footer id="contact" className="bl-footer">
       <div className="bl-footer-grid">
-        <div>
+        <div className="bl-footer-brand">
+          {/* Reversed mark — the standard logo's teal half is illegible on
+              the dark footer. */}
           <Image
-            src="/be-life-logo.png"
+            src="/be-life-logo-reverse.png"
             alt="Be Life Premium Home Care"
-            width={485}
-            height={514}
+            width={364}
+            height={413}
             className="bl-footer-logo"
           />
           <p className="bl-footer-about">
@@ -83,7 +85,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="bl-footer-contact">
           <h4 className="bl-footer-h4">Get in touch</h4>
           <ul className="bl-contact-list">
             <li className="bl-contact-item">

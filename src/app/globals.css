@@ -116,7 +116,7 @@ a:hover {
 }
 
 .bl-logo {
-  height: 60px;
+  height: 66px;
   width: auto;
   display: block;
 }
@@ -464,6 +464,18 @@ a:hover {
   gap: 14px;
   transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
   cursor: pointer;
+  color: var(--ink);
+}
+
+/* The card itself is the link, so keep the global anchor hover colour
+   from bleeding into the heading and body copy. */
+.bl-service-card:hover {
+  color: var(--ink);
+}
+
+.bl-service-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 .bl-service-card:hover {
@@ -846,7 +858,7 @@ a:hover {
 }
 
 .bl-footer-logo {
-  height: 76px;
+  height: 92px;
   width: auto;
   display: block;
 }
@@ -1009,14 +1021,15 @@ a:hover {
   gap: 12px;
   padding: 10px 22px 10px 12px;
   border-radius: 999px;
-  background: var(--cream);
+  background: linear-gradient(140deg, #12454f, #0a2830);
   border: 2px solid var(--gold);
-  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.35);
-  transition: border-color 0.2s;
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.2s, background 0.2s;
 }
 
 .bl-dock-wa:hover {
-  border-color: var(--ink);
+  background: linear-gradient(140deg, #16505c, #0d323b);
+  border-color: var(--gold-light);
 }
 
 .bl-dock-wa-icon {
@@ -1034,7 +1047,7 @@ a:hover {
 .bl-dock-label {
   font-weight: 800;
   font-size: 15px;
-  color: var(--ink);
+  color: var(--cream-text);
   white-space: nowrap;
 }
 
@@ -1042,20 +1055,20 @@ a:hover {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--cream);
+  background: linear-gradient(140deg, #12454f, #0a2830);
   border: 2px solid var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.35);
-  color: var(--ink);
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.45);
+  color: var(--gold-light);
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .bl-dock-call:hover {
-  background: var(--ink);
-  border-color: var(--ink);
+  background: var(--gold);
+  border-color: var(--gold);
   color: #fff;
 }
 
@@ -1071,9 +1084,9 @@ a:hover {
 @media (max-width: 900px) {
   .bl-hero-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
-    padding-top: 60px;
-    padding-bottom: 72px;
+    gap: 40px;
+    padding-top: 56px;
+    padding-bottom: 64px;
   }
   .bl-hero-h1 {
     font-size: 44px;
@@ -1083,7 +1096,7 @@ a:hover {
   }
   .bl-enquiry-grid {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 40px;
   }
   .bl-nav-links {
     display: none;
@@ -1092,46 +1105,191 @@ a:hover {
     grid-template-columns: 1fr 1fr;
     gap: 36px;
   }
-}
-
-@media (max-width: 900px) {
   .bl-moments-h2 {
     font-size: 36px;
+  }
+
+  /* "Care in action" becomes a swipeable, snapping rail. Four stacked
+     squares cost ~1500px of scroll; one peeking row costs ~330px. */
+  .bl-moments-grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    margin-inline: -32px;
+    padding-inline: 32px;
+    padding-bottom: 4px;
+  }
+  .bl-moments-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .bl-moments-grid:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+  }
+  .bl-moment {
+    flex: 0 0 68%;
+    scroll-snap-align: start;
   }
 }
 
 @media (max-width: 620px) {
-  .bl-services-grid,
-  .bl-moments-grid {
-    grid-template-columns: 1fr;
+  /* --- tighter vertical rhythm throughout --- */
+  .bl-hero-grid {
+    padding: 44px 20px 52px;
+    gap: 34px;
+  }
+  .bl-services {
+    padding: 56px 20px 36px;
   }
   .bl-moments {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px 56px;
   }
-  .bl-moments-h2 {
-    font-size: 30px;
-  }
-  .bl-form-row {
-    grid-template-columns: 1fr;
+  .bl-enquiry-grid {
+    padding: 56px 20px;
+    gap: 34px;
   }
   .bl-footer-grid {
-    grid-template-columns: 1fr;
+    padding: 48px 20px 0;
+    gap: 32px 24px;
   }
   .bl-footer-bottom {
+    margin-top: 36px;
+    padding: 20px 20px 96px;
     flex-direction: column;
     text-align: center;
     gap: 14px;
   }
+
+  /* --- services: 2-up compact instead of 8 stacked cards --- */
+  .bl-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .bl-service-card {
+    padding: 16px 14px;
+    gap: 9px;
+    border-radius: 14px;
+  }
+  .bl-service-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+  }
+  .bl-service-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  .bl-service-title {
+    font-size: 15.5px;
+  }
+  .bl-service-desc {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  /* The whole card is the link on mobile, so the affordance is redundant. */
+  .bl-service-link {
+    display: none;
+  }
+  .bl-serv-head {
+    margin-bottom: 28px;
+    gap: 14px;
+  }
+  .bl-serv-h2 {
+    font-size: 30px;
+  }
+  .bl-serv-intro {
+    max-width: none;
+    font-size: 14.5px;
+  }
+
+  /* --- care in action --- */
+  .bl-moments-grid {
+    margin-inline: -20px;
+    padding-inline: 20px;
+  }
+  .bl-moment {
+    flex: 0 0 76%;
+  }
+  .bl-moments-head {
+    margin-bottom: 26px;
+  }
+  .bl-moments-h2 {
+    font-size: 30px;
+  }
+  .bl-moments-intro {
+    font-size: 14.5px;
+  }
+
+  /* --- hero --- */
   .bl-hero-h1 {
     font-size: 36px;
   }
-  .bl-services {
-    padding-left: 20px;
-    padding-right: 20px;
+  .bl-hero-sub {
+    font-size: 16px;
+  }
+  .bl-hero-media {
+    max-width: 400px;
+    margin-inline: auto;
+  }
+  /* Full-width stacked CTAs — larger tap targets and a clean edge
+     instead of two ragged auto-width buttons. */
+  .bl-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .bl-cta-primary,
+  .bl-cta-ghost {
+    width: 100%;
+    justify-content: center;
   }
   .bl-hero-stats {
     gap: 22px;
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+
+  /* --- enquiry --- */
+  .bl-form-row {
+    grid-template-columns: 1fr;
+  }
+  .bl-form-card {
+    padding: 26px 20px;
+    border-radius: 20px;
+  }
+  .bl-enquiry-h2 {
+    font-size: 30px;
+  }
+  .bl-enquiry-sub {
+    font-size: 15.5px;
+    margin-top: 14px;
+  }
+  .bl-assurances {
+    gap: 14px;
+    margin-top: 26px;
+  }
+
+  /* --- footer: keep link columns paired rather than fully stacked --- */
+  .bl-footer-brand {
+    grid-column: 1 / -1;
+  }
+  .bl-footer-contact {
+    grid-column: 1 / -1;
+  }
+  .bl-footer-about {
+    max-width: none;
+  }
+
+  /* --- chrome --- */
+  .bl-logo {
+    height: 58px;
+  }
+  .bl-footer-logo {
+    height: 80px;
   }
   .bl-dock-label {
     display: none;

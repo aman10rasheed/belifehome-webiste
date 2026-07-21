@@ -10,8 +10,8 @@ export default function Header() {
           <Image
             src="/be-life-logo.png"
             alt="Be Life Premium Home Care"
-            width={485}
-            height={514}
+            width={364}
+            height={413}
             className="bl-logo"
             priority
           />
