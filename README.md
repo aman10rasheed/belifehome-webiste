@@ -139,3 +139,4 @@ serves resized WebP/AVIF variants at request time.
   this needs wiring to an inbox or CRM before launch.
 - **Placeholder links** — footer About/Careers/Gallery/FAQ and the Privacy and
   Terms links point at `#`.
+# belifehome-webiste
