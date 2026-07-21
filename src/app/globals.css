@@ -784,6 +784,15 @@ a:hover {
   resize: vertical;
 }
 
+/* The native dropdown popup takes its metrics from the option elements, so
+   they need an explicit size — otherwise the list renders cramped on mobile. */
+.bl-select option {
+  font-size: 16px;
+  padding: 10px 12px;
+  color: var(--ink);
+  background: #fff;
+}
+
 .bl-input:focus,
 .bl-select:focus,
 .bl-textarea:focus {
@@ -1287,6 +1296,17 @@ a:hover {
   .bl-form-row {
     grid-template-columns: 1fr;
   }
+  /* 16px is the threshold below which iOS auto-zooms the page on focus, and
+     it keeps the native select popup legible. */
+  .bl-input,
+  .bl-select,
+  .bl-textarea {
+    font-size: 16px;
+    padding: 13px 14px;
+  }
+  .bl-select {
+    height: 50px;
+  }
   .bl-form-card {
     padding: 26px 20px;
     border-radius: 20px;
@@ -1321,12 +1341,58 @@ a:hover {
   .bl-footer-logo {
     height: 80px;
   }
+  /* The label stays visible on phones — the dock scales down instead of
+     dropping it, so the CTA still reads as words rather than a bare icon. */
+  .bl-dock {
+    gap: 8px;
+    padding: 8px;
+    max-width: calc(100vw - 20px);
+  }
   .bl-dock-label {
-    display: none;
+    font-size: 13px;
+  }
+  .bl-dock-wa {
+    gap: 10px;
+    padding: 7px 16px 7px 7px;
+  }
+  .bl-dock-wa-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .bl-dock-wa-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .bl-dock-call {
+    width: 46px;
+    height: 46px;
+  }
+  .bl-dock-call svg {
+    width: 19px;
+    height: 19px;
   }
   .bl-header-inner {
     padding-left: 18px;
     padding-right: 18px;
+  }
+}
+
+/* Very narrow phones (iPhone SE and similar) — keep the dock on one line. */
+@media (max-width: 370px) {
+  .bl-dock-label {
+    font-size: 12.5px;
+  }
+  .bl-dock-wa {
+    gap: 8px;
+    padding: 6px 12px 6px 6px;
+  }
+  .bl-dock-wa-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .bl-dock-call {
+    width: 44px;
+    height: 44px;
   }
 }
 
