@@ -1,0 +1,30 @@
+{
+  "name": "be-life-premium-home-care",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Marketing site for Be Life Premium Home Care — nursing, elderly and post-surgery care at home.",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.6",
+    "@types/node": "^22.15.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.5.21",
+    "typescript": "^5.8.3"
+  }
+}
